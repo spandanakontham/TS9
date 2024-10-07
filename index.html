@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Ad Script Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Video Ad Script Editor</h1>
+        <div class="top-dropdowns">
+            <select id="corporate-entity-dropdown">
+                <option value="">Select Corporate Entity</option>
+            </select>
+            <select id="region-dropdown">
+                <option value="">Select Region</option>
+            </select>
+        </div>
+        <div class="main-content">
+            <div class="column">
+                <div id="product-properties" class="box">
+                    <h2>Product Details</h2>
+                    <div class="box-content">
+                        <!-- All Saved Products will be shown here first -->
+                    </div>
+                </div>
+                <div id="product-form" class="box" style="display: none;">
+                    <div class="header-container">
+                        <h2>Product Detail</h2>
+                        <div class="dropdown">
+                            <button id="add-item-btn" class="dropdown-btn">Add <i class="fas fa-chevron-right"></i></button>
+                            <div class="dropdown-content">
+                                <a href="#" data-type="strategy">Strategy</a>
+                                <a href="#" data-type="angle">Angle</a>
+                                <a href="#" data-type="script">Script</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-content">
+                        <label for="brand">Brand<span class="mandatory">*</span></label>
+                        <input type="text" id="brand" placeholder="Select or add brand" required>
+
+                        <div class="version-container">
+                            <label for="brand-version">Brand Version<span class="mandatory">*</span></label>
+                            <select id="brand-version" required>
+                                <option value="">Select brand version</option>
+                            </select>
+                        </div>
+
+                        <label for="product">Product<span class="mandatory">*</span></label>
+                        <input type="text" id="product" placeholder="Select or add product" required>
+
+                        <div class="version-container">
+                            <label for="product-version">Product Version<span class="mandatory">*</span></label>
+                            <select id="product-version" required>
+                                <option value="">Select product version</option>
+                            </select>
+                        </div>
+
+                        <label for="product-detail-name">Product Detail Name<span class="mandatory">*</span></label>
+                        <input type="text" id="product-detail-name" placeholder="Enter product detail name" required>
+
+                        <div id="property-inputs"></div>
+
+                        <div class="button-container">
+                            <a href="#" id="edit-btn">Edit</a>
+                            <a href="#" id="cancel-btn">Cancel</a>
+                            <a href="#" id="save-btn">Save</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div id="strategies-box" class="box">
+                    <h2>Strategies</h2>
+                    <div id="strategies-content"></div>
+                </div>
+            </div>
+            <div class="column">
+                <div id="angles-box" class="box">
+                    <h2>Angles</h2>
+                    <div id="angles-content"></div>
+                </div>
+            </div>
+            <div class="column">
+                <div id="scripts-box" class="box">
+                    <h2>Scripts</h2>
+                    <div id="scripts-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+    <div id="varModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Variants</h2>
+            <div id="varForm">
+                <!-- Form content will be added here -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

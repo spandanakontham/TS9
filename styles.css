@@ -1,0 +1,855 @@
+body, html {
+    height: 100%;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: #333;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 100%;
+    padding: 20px 40px;
+    margin: 0 auto;
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4 {
+    font-weight: normal;
+}
+
+h1 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.main-content {
+    display: flex;
+    gap: 30px;
+    height: calc(100vh - 150px);
+}
+
+.column {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ddd #f1f1f1;
+}
+
+.column::-webkit-scrollbar {
+    width: 8px;
+}
+
+.column::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.column::-webkit-scrollbar-thumb {
+    background-color: #FF7A59;
+    border-radius: 4px;
+}
+
+.box {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    max-height: calc(100% - 40px);
+    overflow-y: auto;
+}
+
+h2 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.mandatory {
+    color: red;
+}
+
+.version-container {
+    margin-bottom: 10px;
+}
+
+#all-saved-products-btn, .small-btn, .add-more {
+    background-color: #FF7A59;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 8px 16px;
+}
+
+#all-saved-products-btn:hover, .small-btn:hover, .add-more:hover {
+    background-color: #E56A4B;
+}
+
+.saved-products-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.saved-products-table th,
+.saved-products-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.saved-products-table th {
+    background-color: #f2f2f2;
+}
+
+.saved-products-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.saved-products-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.property-input {
+    margin-bottom: 15px;
+}
+
+.property-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.property-header h4 {
+    margin: 0;
+    font-size: 14px;
+}
+
+.add-more {
+    background: none;
+    border: none;
+    color: #FF7A59;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: underline;
+    padding: 0;
+}
+
+.input-group {
+    margin-bottom: 5px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.button-container button {
+    margin: 5px;
+    flex-grow: 1;
+}
+
+.saved-products-table tbody tr {
+    cursor: pointer;
+}
+
+.autocomplete-container {
+    position: relative;
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.autocomplete-items div:hover {
+    background-color: #e9e9e9;
+}
+
+.angle-subbox, .script-subbox, .variant-subbox, .strategy-subbox {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.angle-subbox.selected, .script-subbox.selected, .variant-subbox.selected, .strategy-subbox.selected {
+    background-color: #f0f0f0;
+}
+
+.subbox-content {
+    display: none;
+    padding-top: 30px; /* Increased top padding */
+}
+
+.variant-dropdowns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.variant-dropdowns select {
+    width: 48%;
+    padding: 8px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.angle-actions, .script-actions, .variant-actions, .strategy-actions {
+    position: static;
+    margin-top: 10px;
+}
+
+.add-scripts-btn, .add-variant-btn {
+    position: static;
+    margin-top: 10px;
+}
+
+.ai-generated-content {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.ai-generated {
+    background-color: #f9f9f9;
+}
+
+.angle-action-btn, .script-action-btn, .variant-action-btn, .strategy-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px; /* Reduced from 14px */
+    margin-right: 3px; /* Reduced from 5px */
+    color: #FF7A59;
+    padding: 2px; /* Added padding for better touch targets */
+}
+
+.angle-action-btn:hover, .script-action-btn:hover, .variant-action-btn:hover, .strategy-action-btn:hover {
+    color: #E56A4B;
+}
+
+.add-scripts-btn, .add-variant-btn {
+    position: static;
+    margin-top: 10px;
+}
+
+.angle-subbox input, .script-subbox input, .variant-subbox input, .strategy-subbox input {
+    width: calc(100% - 20px);
+    margin-bottom: 40px;
+}
+
+.ai-generate-dropdown {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.top-dropdowns {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.top-dropdowns select {
+    width: 48%;
+}
+
+.angle-subbox h3, .script-subbox h3, .variant-subbox h3, .strategy-subbox h3 {
+    cursor: pointer;
+}
+
+.angle-subbox h3::after, .script-subbox h3::after, .variant-subbox h3::after, .strategy-subbox h3::after {
+    content: '\25BC';
+    float: right;
+    transition: transform 0.3s ease;
+}
+
+.angle-subbox.collapsed h3::after, .script-subbox.collapsed h3::after, .variant-subbox.collapsed h3::after, .strategy-subbox.collapsed h3::after {
+    transform: rotate(-90deg);
+}
+
+#ai-generate-angles::before, #ai-generate-scripts::before, #ai-generate-variants::before, #ai-generate-strategies::before {
+    content: '\2728';
+    margin-right: 5px;
+}
+
+.tree-graph {
+    background-color: #FFDAB9;
+    padding: 5px;
+    border-radius: 4px;
+    display: none;
+    margin-left: 10px;
+    font-size: 12px;
+    float: none;
+}
+
+.tree-graph i {
+    margin-right: 5px;
+    color: #FF7A59;
+}
+
+.large-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+table {
+    width: 100%;
+}
+
+table td {
+    padding: 5px;
+    vertical-align: top;
+}
+
+.property-header h4,
+label[for="top-feature-customers-look-for"],
+label[for="top-feature-of-company-product"],
+label[for="top-benefit-of-company-product"],
+label[for="ad-references"],
+label[for="product-media"],
+label[for="additional-information"] {
+    font-size: 12px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#cancel-btn, #save-btn {
+    background: none;
+    border: none;
+    color: #FF7A59;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: underline;
+    padding: 0;
+    margin-right: 15px;
+}
+
+#cancel-btn:hover, #save-btn:hover {
+    color: #E56A4B;
+}
+
+.dropdown-btn {
+    background-color: #FF7A59;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.dropdown-btn i {
+    margin-left: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropdown-btn {
+    background-color: #E56A4B;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-container h2 {
+    margin: 0;
+}
+
+.strategy-add-dropdown, .angle-add-dropdown, .script-add-dropdown {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.strategy-subbox, .angle-subbox, .script-subbox {
+    position: relative;
+    padding-top: 40px; /* Increase top padding to make room for the Add button */
+}
+
+.angle-add-left-dropdown,
+.script-add-left-dropdown,
+.variant-add-left-dropdown {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: none; /* Initially hidden */
+}
+
+.angle-add-dropdown,
+.script-add-dropdown,
+.variant-add-dropdown {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.subbox-content {
+    display: none;
+    padding-top: 30px; /* Increased top padding */
+    text-align: left; /* Align content to the left */
+}
+
+.dropdown-btn {
+    background-color: #FF7A59;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.dropdown-btn i {
+    margin-right: 5px;
+}
+
+.angle-add-left-dropdown .dropdown-content,
+.script-add-left-dropdown .dropdown-content,
+.variant-add-left-dropdown .dropdown-content {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 1000; /* This ensures the dropdown appears on top */
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.script-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    table-layout: fixed;
+}
+
+.script-table th,
+.script-table td {
+    border: 1px solid #ddd;
+    padding: 6px;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+.script-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.script-input {
+    width: 100%;
+    padding: 4px;
+    font-size: 12px;
+    border: none;
+    background-color: transparent;
+    box-sizing: border-box;
+}
+
+.script-input:focus {
+    outline: none;
+    background-color: #f0f0f0;
+}
+
+.script-subbox {
+    font-size: 12px;
+}
+
+.script-subbox h3 {
+    font-size: 14px;
+}
+
+.add-row-link {
+    color: #FF7A59;
+    text-decoration: none;
+    font-size: 12px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.add-row-link:hover {
+    text-decoration: underline;
+}
+
+.delete-row-btn, .delete-column-btn {
+    color: #999;
+    cursor: pointer;
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+}
+
+.delete-column-btn {
+    top: 5px;
+    right: 5px;
+    transform: none;
+}
+
+.script-table th, .script-table td {
+    position: relative;
+}
+
+.add-column-dropdown {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.script-table th, .script-table td {
+    position: relative;
+}
+
+.delete-column-btn {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+
+.add-column-dropdown .dropdown-btn {
+    background-color: #f0f0f0;
+    color: #FF7A59;
+    border: 1px solid #ccc;
+}
+
+.add-column-dropdown .dropdown-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.column:nth-child(4) {
+    flex: 2;
+}
+
+.delete-row-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: #999;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.delete-row-btn:hover {
+    color: #666;
+}
+
+.script-table td {
+    position: relative;
+    padding-bottom: 25px; /* Add some space for the delete button */
+}
+
+#add-new-product-detail {
+    font-size: 12px;
+    padding: 6px 12px;
+}
+
+.add-new-product-container {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.edit-product-btn {
+    cursor: pointer;
+    color: #FF7A59;
+}
+
+.edit-product-btn:hover {
+    color: #E56A4B;
+}
+
+.saved-products-table td:first-child {
+    position: relative;
+    padding-left: 25px; /* Make room for the edit button */
+}
+
+.edit-product-btn {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+    color: #FF7A59;
+}
+
+.edit-product-btn:hover {
+    color: #E56A4B;
+}
+
+#edit-btn, #cancel-btn, #save-btn {
+    background: none;
+    border: none;
+    color: #FF7A59;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: underline;
+    padding: 0;
+    margin-right: 15px;
+}
+
+#edit-btn:hover, #cancel-btn:hover, #save-btn:hover {
+    color: #E56A4B;
+}
+
+/* Added styles for script nickname field */
+.script-nickname {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.script-subbox label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.add-var-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #FF7A59;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: none; /* Initially hidden */
+}
+
+.add-var-btn:hover {
+    background-color: #E56A4B;
+}
+
+.script-subbox {
+    position: relative;
+    padding-bottom: 40px; /* Increase bottom padding to make room for the button */
+}
+
+.script-subbox:not(.collapsed) .add-var-btn {
+    display: block; /* Show the button when the subbox is not collapsed */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.var-columns {
+    display: flex;
+    gap: 10px;
+}
+
+.var-column {
+    flex: 1;
+}
+
+.var-column textarea {
+    width: 100%;
+    height: 100%;
+    resize: vertical;
+}
+.var-column {
+    flex: 1;
+    position: relative;
+}
+
+.add-var-option {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FF7A59;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+.var-dropdowns {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.var-dropdowns select {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.var-column .script-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.var-column .script-table th,
+.var-column .script-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.var-column .script-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.var-column .script-input {
+    width: 100%;
+    resize: vertical;
+    min-height: 60px;
+}
+
+.var-dropdowns {
+    position: static;
+    transform: none;
+    margin-bottom: 10px;
+}
+
+.var-column {
+    display: flex;
+    flex-direction: column;
+}
+
+ .var-column {
+       background-color: #f0f0f0;
+       border: 1px solid #ddd;
+       border-radius: 5px;
+       padding: 10px;
+       margin: 5px;
+   }
+
+.save-variant-btn {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #FF7A59;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.save-variant-btn:hover {
+    background-color: #E56A4B;
+}
